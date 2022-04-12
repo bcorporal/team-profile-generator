@@ -1,67 +1,33 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./generateMarkdown')
+const Engineer = require("./lib/Engineer") 
+const Manager = require("./lib/Manager") 
+const Intern = require("./lib/Intern") 
 
-
-// questions for generating readme
-const questions = [
+    inquirer.prompt([
     {
         type: 'input',
         name: 'title',
-        message: 'Enter the title of you project.',
+        message: 'What is the Mangers name?',
     },
     {
         type: 'input',
-        name: 'description',
-        message: 'Provide a short description of your project.',
+        name: 'id',
+        message: 'What is the managers ID number?',
     },
     {
         type: 'input',
-        name: 'installation',
-        message: 'How do you install this project?',
-    },
-    {
-        type: 'input',
-        name: 'instructions',
-        message: 'Provide instructions and examples for use.',
-    },
-    {
-        type: 'input',
-        name: 'features',
-        message: 'What are some key features?',
-    },
-    {
-        type: 'checkbox',
-        name: 'languages',
-        message: 'What language(s) are used in this app?',
-        choices: ['HTML', 'Javascript', 'Python', 'C', 'Java'],
-    },
-    {
-        type: 'input',
-        name: 'contributions',
-        message: 'List collaborators, if any, with links to their GitHub profiles.',
-    },
-    {
-        type: 'checkbox',
-        message: 'Chose a license for your product.',
-        name: 'license',
-        choices: ['MIT', 'GNU', 'None'],
-    },
-    {
-        type: 'input',
-        message: 'Test Instructions',
-        name: 'tests',
-    },
-    {
-        type: 'input',
-        message: 'Enter your github profile username.',
-        name: 'github',
-    },
-    {
-        type: 'input',
-        message: 'Enter your email',
         name: 'email',
+        message: 'What is the managers email address?',
     },
+    {
+        type: 'input',
+        name: 'officeNumber',
+        message: 'Provide instructions and examples for use.',
+    }
+]).then((ManagerInfo) => {
+    
+}
 ];
  
 // Function to write README file
@@ -76,16 +42,9 @@ const questions = [
 }
 // TODO: Create a function to initialize app
 
-function init() {
-    inquirer.prompt(questions)
-    .then((data) => {
-    console.log("---Generating---README---File---");
-    
-    const filename = `${data.title.toLowerCase().split(' ').join('')}.json`;
-    
-    writeToFile("./utils/README.md", generateMarkdown({ ...data }));
-    })
-}
+function generateHtml() {
+    fs.writeFile
+
 
 // Function call to initialize app
 init();
